@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,6 +27,13 @@ SECRET_KEY = 'django-insecure-yny5)#17b9)m3!*3r!qr=+_$f*focxs(%vt%-x65aki$r*lj^%
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
+# BELOW SETTINGS from DOCKER DOCS
+#SECRET_KEY = os.environ.get("SECRET_KEY")
+ 
+#DEBUG = bool(os.environ.get("DEBUG", default=0))
+ 
+#ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS","127.0.0.1").split(",")
 
 
 # Application definition
