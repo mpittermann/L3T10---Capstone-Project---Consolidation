@@ -9,6 +9,12 @@ from .forms import MemberForm
 
 # Create your views here.
 def register(request):
+    '''Adds a new member to the member list
+
+        :return: Returns to main.html or registr.html pages.
+        :rtype: html
+    '''
+
     if request.method == 'POST':
         first_name = request.POST.get('first_name', 'TestF')
         last_name = request.POST.get('last_name', 'TestL')
@@ -29,6 +35,14 @@ def register(request):
     
 
 def member_list(request):
+    '''Generates the list of members to populate the member_list.html.
+    
+        :param Member latest_member_list: List of Member objects stored
+               
+        :return: member_list.html
+        :rtype: html
+
+    '''
     latest_member_list = Member.objects.order_by('-last_name')[:5]
     context = {'latest_member_list': latest_member_list}
     return render(request, "member_list.html", context)

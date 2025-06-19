@@ -10,10 +10,21 @@ from django.contrib.auth.decorators import login_required
 #     return render(request, 'login.html')
 
 def user_logout(request):
+    '''Sets the user session to a logout state.
+    
+    '''
     logout(request)
     return render(request, 'logout.html')
 
 def user_login(request):
+    '''Reads the entered username and password submitted on the login page and compares it to
+        registered users. If the login credentials exist then the user is redirected back to the
+        main page, otherwise sets the user as logged in for teh session.
+
+        :param str username: Username. Case sensitive.
+        :param str password: Password. Case sensitive
+    
+    '''
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
